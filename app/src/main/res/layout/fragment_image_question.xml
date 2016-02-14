@@ -4,10 +4,27 @@
     android:layout_height="match_parent"
     tools:context="com.wisc.ganz.quizx.ImageQuestionFragment">
 
-
-    <ImageView
+    <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/iv_question"
-        android:layout_gravity="top" />
+        android:layout_height="match_parent"
+        >
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/iv_question"
+            android:layout_gravity="center_horizontal|top"
+            android:src="@drawable/g_logo"/>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text=""
+            android:id="@+id/tv_ImgQuestion"
+            android:layout_below="@+id/iv_question"
+            android:layout_centerHorizontal="true"
+            android:textSize="20dp"/>
+
+    </RelativeLayout>
+
+
 </FrameLayout>
