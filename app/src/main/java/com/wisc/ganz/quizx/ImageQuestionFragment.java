@@ -8,6 +8,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
+import android.widget.Button;
 
 
 /**
@@ -23,6 +24,8 @@ public class ImageQuestionFragment extends Fragment {
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM1 = "param1";
     private static final String ARG_PARAM2 = "param2";
+
+    private Button submitButton;
 
     // TODO: Rename and change types of parameters
     private String mParam1;
@@ -70,10 +73,21 @@ public class ImageQuestionFragment extends Fragment {
         TextView question = (TextView)view.findViewById(R.id.tv_ImgQuestion);
         question.setText(R.string.question_img_1);
 
+        submitButton = (Button) view.findViewById(R.id.image_submit_button);
+
         return view;
 
     }
+    @Override
+    public void onViewCreated(View view, Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
+        submitButton.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View v){
 
+            }
+        });
+    }
     // TODO: Rename method, update argument and hook method into UI event
     public void onButtonPressed(Uri uri) {
         if (mListener != null) {
@@ -97,6 +111,7 @@ public class ImageQuestionFragment extends Fragment {
         super.onDetach();
         mListener = null;
     }
+
 
     /**
      * This interface must be implemented by activities that contain this

@@ -2,7 +2,9 @@
     <string name="app_name">Quiz X</string>
     <string name="app_tagline">Do you know your X?</string>
     <string name="button_start">Start Quiz!</string>
+    <string name="submit">Submit</string>
+    <string name="hint_text">Enter answer here...</string>
 
 
-    <string name="question_img_1">Which Technology company\'s logo is this?</string>
+    <string name="question_img_1">Which famous tech company\'s logo is this?</string>
 </resources>
