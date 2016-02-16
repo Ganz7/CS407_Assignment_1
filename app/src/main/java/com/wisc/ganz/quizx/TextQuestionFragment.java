@@ -26,9 +26,9 @@ public class TextQuestionFragment extends Fragment {
     private RadioGroup optionsRadioGroup;
 
 
-    private int totalQuestions;
-    private int answeredQuestions;
-    private int correctAnswers;
+    private int totalQuestions; //Total Number of Questions
+    private int answeredQuestions; //Total Number of Questions Answered (Not used as of now)
+    private int correctAnswers; //Correct Answers
 
     public TextQuestionFragment() {
         // Required empty public constructor
