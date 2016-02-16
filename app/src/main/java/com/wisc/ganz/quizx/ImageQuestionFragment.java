@@ -84,7 +84,11 @@ public class ImageQuestionFragment extends Fragment {
         submitButton.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v){
-
+                getFragmentManager()
+                        .beginTransaction()
+                        .replace(R.id.quiz_fragment_container, TextQuestionFragment.newInstance(null, null))
+                        .addToBackStack(null)
+                        .commit();
             }
         });
     }
