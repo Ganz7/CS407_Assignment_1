@@ -10,6 +10,7 @@ import android.view.ViewGroup;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Button;
+import android.widget.Toast;
 
 
 /**
@@ -29,10 +30,6 @@ public class ImageQuestionFragment extends Fragment {
 
     private Button submitButton;
     private EditText answerBox;
-
-    // TODO: Rename and change types of parameters
-    private String mParam1;
-    private String mParam2;
 
     private int totalQuestions;
     private int answeredQuestions;
@@ -69,8 +66,8 @@ public class ImageQuestionFragment extends Fragment {
         super.onCreate(savedInstanceState);
         if (getArguments() != null) {
             totalQuestions = getArguments().getInt(ARG_PARAM1);
-            answeredQuestions = getArguments().getInt(ARG_PARAM1);
-            correctAnswers = getArguments().getInt(ARG_PARAM1);
+            answeredQuestions = getArguments().getInt(ARG_PARAM2);
+            correctAnswers = getArguments().getInt(ARG_PARAM3);
         }
     }
 
@@ -97,11 +94,13 @@ public class ImageQuestionFragment extends Fragment {
             @Override
             public void onClick(View v){
                 if(isEmpty(answerBox)) {
+                    String message = "Please enter some text in the text field";
+                    Toast.makeText(getActivity().getApplicationContext(), message, Toast.LENGTH_LONG).show();
                     return;
                 }
 
                 String answer = answerBox.getText().toString().trim();
-                if(answer.toLowerCase() == "google")
+                if(answer.toLowerCase().equals("google"))
                     correctAnswers++;
 
                 answeredQuestions++;

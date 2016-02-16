@@ -11,6 +11,7 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
+import android.widget.Toast;
 
 public class TextQuestionFragment extends Fragment {
 
@@ -76,12 +77,14 @@ public class TextQuestionFragment extends Fragment {
 
                 /*No option has been chosen yet*/
                 if(chosenIndex == -1){
+                    String message = "Please choose an option.";
+                    Toast.makeText(getActivity().getApplicationContext(), message, Toast.LENGTH_LONG).show();
                     return; //do nothing
                 }
 
                 answeredQuestions++;
-                String selectedtext = chosenButton.getText().toString();
-                if(selectedtext.equals(getString(R.string.option_Germany))){
+                String selectedText = chosenButton.getText().toString();
+                if(selectedText.equals(getString(R.string.option_Germany))){
                     correctAnswers++;
                 }
                 displayResult(correctAnswers, totalQuestions);
@@ -116,7 +119,7 @@ public class TextQuestionFragment extends Fragment {
 
         StringBuilder message = new StringBuilder();
         message.append("You scored ").append(arg_correctAnswers).append(" out of ")
-                .append(arg_totalQuestions).append( "in this Quiz!");
+                .append(arg_totalQuestions).append( " in this Quiz!");
         resultDialogBuilder.setMessage(message);
 
         resultDialogBuilder.show();
