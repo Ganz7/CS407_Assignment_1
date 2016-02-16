@@ -71,8 +71,9 @@ public class ImageQuestionFragment extends Fragment {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_image_question, container, false);
 
-        TextView question = (TextView)view.findViewById(R.id.tv_ImgQuestion);
-        question.setText(R.string.question_img_1);
+        TextView questionView = (TextView)view.findViewById(R.id.tv_ImgQuestion);
+        String question = "Question " + (answeredQuestions+1) + " : " + getString(R.string.question_img_1);
+        questionView.setText(question);
 
         submitButton = (Button) view.findViewById(R.id.image_submit_button);
         answerBox = (EditText) view.findViewById(R.id.et_imageQuestionAnswer);

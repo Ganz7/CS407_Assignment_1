@@ -11,6 +11,7 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
+import android.widget.TextView;
 import android.widget.Toast;
 
 public class TextQuestionFragment extends Fragment {
@@ -59,6 +60,11 @@ public class TextQuestionFragment extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_text_question, container, false);
+
+        TextView questionView = (TextView)view.findViewById(R.id.tv_TextQuestion);
+        String question = "Question " + (answeredQuestions+1) + " : " + getString(R.string.question_text_1);
+        questionView.setText(question);
+
         submitButton = (Button) view.findViewById(R.id.text_submit_button);
         optionsRadioGroup = (RadioGroup) view.findViewById(R.id.text_radio_group);
 
