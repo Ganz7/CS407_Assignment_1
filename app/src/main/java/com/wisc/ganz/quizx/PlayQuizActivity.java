@@ -24,5 +24,5 @@ public class PlayQuizActivity extends AppCompatActivity
         //Empty for now
         //Will expand if need to communicate between fragments
     }
-    
+
 }
