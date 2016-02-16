@@ -1,6 +1,8 @@
 package com.wisc.ganz.quizx;
 
 
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.os.Bundle;
 import android.app.Fragment;
 import android.view.LayoutInflater;
@@ -82,9 +84,43 @@ public class TextQuestionFragment extends Fragment {
                 if(selectedtext.equals(getString(R.string.option_Germany))){
                     correctAnswers++;
                 }
+                displayResult(correctAnswers, totalQuestions);
 
             }
         });
+    }
+
+    private void displayResult(int arg_correctAnswers, int arg_totalQuestions){
+        //do a prompt about the result
+        AlertDialog.Builder resultDialogBuilder = new AlertDialog.Builder(getActivity());
+        resultDialogBuilder.setCancelable(true)
+                .setTitle("Quiz Results")
+                .setPositiveButton("Restart", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        getFragmentManager()
+                                .beginTransaction()
+                                .replace(R.id.quiz_fragment_container,
+                                        ImageQuestionFragment.newInstance(2, 0, 0))
+                                .addToBackStack(null)
+                                .commit();
+                    }
+                })
+                .setNegativeButton("Quit", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        //back out the the start screen
+                        getActivity().finish();
+                    }
+                });
+
+        StringBuilder message = new StringBuilder();
+        message.append("You scored ").append(arg_correctAnswers).append(" out of ")
+                .append(arg_totalQuestions).append( "in this Quiz!");
+        resultDialogBuilder.setMessage(message);
+
+        resultDialogBuilder.show();
+
     }
 
 }
