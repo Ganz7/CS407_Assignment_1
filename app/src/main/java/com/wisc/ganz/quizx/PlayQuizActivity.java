@@ -13,9 +13,14 @@ public class PlayQuizActivity extends AppCompatActivity
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_play_quiz);
 
+        int totalQuestions = 2;
+        int answeredQuestions = 0;
+        int correctAnswers = 0;
+
         getFragmentManager()
                 .beginTransaction()
-                .replace(R.id.quiz_fragment_container, ImageQuestionFragment.newInstance(null, null))
+                .replace(R.id.quiz_fragment_container,
+                        ImageQuestionFragment.newInstance(totalQuestions, answeredQuestions, correctAnswers))
                 .addToBackStack(null)
                 .commit();
     }

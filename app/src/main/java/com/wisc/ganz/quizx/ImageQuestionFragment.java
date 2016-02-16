@@ -7,6 +7,7 @@ import android.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Button;
 
@@ -24,12 +25,18 @@ public class ImageQuestionFragment extends Fragment {
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM1 = "param1";
     private static final String ARG_PARAM2 = "param2";
+    private static final String ARG_PARAM3 = "param3";
 
     private Button submitButton;
+    private EditText answerBox;
 
     // TODO: Rename and change types of parameters
     private String mParam1;
     private String mParam2;
+
+    private int totalQuestions;
+    private int answeredQuestions;
+    private int correctAnswers;
 
     private OnFragmentInteractionListener mListener;
 
@@ -46,11 +53,13 @@ public class ImageQuestionFragment extends Fragment {
      * @return A new instance of fragment ImageQuestionFragment.
      */
     // TODO: Rename and change types and number of parameters
-    public static ImageQuestionFragment newInstance(String param1, String param2) {
+    public static ImageQuestionFragment newInstance(int param1, int param2, int param3) {
         ImageQuestionFragment fragment = new ImageQuestionFragment();
         Bundle args = new Bundle();
-        args.putString(ARG_PARAM1, param1);
-        args.putString(ARG_PARAM2, param2);
+        //args.putString(ARG_PARAM1, param1);
+        args.putInt(ARG_PARAM1, param1);
+        args.putInt(ARG_PARAM2, param2);
+        args.putInt(ARG_PARAM3, param3);
         fragment.setArguments(args);
         return fragment;
     }
@@ -59,8 +68,9 @@ public class ImageQuestionFragment extends Fragment {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         if (getArguments() != null) {
-            mParam1 = getArguments().getString(ARG_PARAM1);
-            mParam2 = getArguments().getString(ARG_PARAM2);
+            totalQuestions = getArguments().getInt(ARG_PARAM1);
+            answeredQuestions = getArguments().getInt(ARG_PARAM1);
+            correctAnswers = getArguments().getInt(ARG_PARAM1);
         }
     }
 
@@ -74,24 +84,47 @@ public class ImageQuestionFragment extends Fragment {
         question.setText(R.string.question_img_1);
 
         submitButton = (Button) view.findViewById(R.id.image_submit_button);
+        answerBox = (EditText) view.findViewById(R.id.et_imageQuestionAnswer);
 
         return view;
 
     }
+
     @Override
     public void onViewCreated(View view, Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         submitButton.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v){
+                if(isEmpty(answerBox)) {
+                    return;
+                }
+
+                String answer = answerBox.getText().toString().trim();
+                if(answer.toLowerCase() == "google")
+                    correctAnswers++;
+
+                answeredQuestions++;
+
                 getFragmentManager()
                         .beginTransaction()
-                        .replace(R.id.quiz_fragment_container, TextQuestionFragment.newInstance(null, null))
+                        .replace(R.id.quiz_fragment_container,
+                                TextQuestionFragment.newInstance(totalQuestions, answeredQuestions, correctAnswers))
                         .addToBackStack(null)
                         .commit();
             }
         });
     }
+
+    /**
+     * Checks if a given edittext is empty (spaces are also considered empty)
+     * @param etText
+     * @return True if it is Empty. False otherwise
+     */
+    private boolean isEmpty(EditText etText) {
+        return etText.getText().toString().trim().length() == 0;
+    }
+
     // TODO: Rename method, update argument and hook method into UI event
     public void onButtonPressed(Uri uri) {
         if (mListener != null) {
