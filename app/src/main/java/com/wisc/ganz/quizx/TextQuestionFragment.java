@@ -77,6 +77,12 @@ public class TextQuestionFragment extends Fragment {
                     return; //do nothing
                 }
 
+                answeredQuestions++;
+                String selectedtext = chosenButton.getText().toString();
+                if(selectedtext.equals(getString(R.string.option_Germany))){
+                    correctAnswers++;
+                }
+
             }
         });
     }
