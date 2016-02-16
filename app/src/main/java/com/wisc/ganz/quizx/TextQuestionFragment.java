@@ -7,6 +7,8 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.RadioButton;
+import android.widget.RadioGroup;
 
 public class TextQuestionFragment extends Fragment {
 
@@ -18,6 +20,8 @@ public class TextQuestionFragment extends Fragment {
     private String mParam2;
 
     private Button submitButton;
+    private RadioGroup optionsRadioGroup;
+
 
     private int totalQuestions;
     private int answeredQuestions;
@@ -53,6 +57,7 @@ public class TextQuestionFragment extends Fragment {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_text_question, container, false);
         submitButton = (Button) view.findViewById(R.id.text_submit_button);
+        optionsRadioGroup = (RadioGroup) view.findViewById(R.id.text_radio_group);
 
         return view;
     }
@@ -64,6 +69,13 @@ public class TextQuestionFragment extends Fragment {
         submitButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                RadioButton chosenButton = (RadioButton) getActivity().findViewById(optionsRadioGroup.getCheckedRadioButtonId());
+                int chosenIndex = optionsRadioGroup.indexOfChild(chosenButton);
+
+                /*No option has been chosen yet*/
+                if(chosenIndex == -1){
+                    return; //do nothing
+                }
 
             }
         });
