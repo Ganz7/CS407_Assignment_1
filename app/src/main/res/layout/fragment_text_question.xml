@@ -14,7 +14,8 @@
         android:text="@string/question_text_1"
         android:id="@+id/tv_TextQuestion"
         android:textSize="20dp"
-        android:layout_gravity="top"/>
+        android:layout_gravity="top"
+        android:paddingTop="10dp"/>
 
         <RadioGroup
             android:layout_width="match_parent"
@@ -22,7 +23,7 @@
             android:layout_below="@+id/tv_TextQuestion"
             android:layout_centerHorizontal="true"
             android:orientation="vertical"
-            android:paddingTop="30dp">
+            android:paddingTop="25dp">
             <RadioButton android:id="@+id/radio_option1"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
