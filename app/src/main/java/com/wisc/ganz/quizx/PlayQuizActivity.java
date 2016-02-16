@@ -5,8 +5,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 
-public class PlayQuizActivity extends AppCompatActivity
-        implements ImageQuestionFragment.OnFragmentInteractionListener{
+public class PlayQuizActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -23,11 +22,6 @@ public class PlayQuizActivity extends AppCompatActivity
                         ImageQuestionFragment.newInstance(totalQuestions, answeredQuestions, correctAnswers))
                 .addToBackStack(null)
                 .commit();
-    }
-
-    public void onFragmentInteraction(Uri uri){
-        //Empty for now
-        //Will expand if need to communicate between fragments
     }
 
 }
