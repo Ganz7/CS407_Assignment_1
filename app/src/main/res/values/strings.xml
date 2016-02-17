@@ -14,4 +14,7 @@
     <string name="option_Brazil">Brazil</string>
     <string name="option_Argentina">Argentina</string>
     <string name="option_Germany">Germany</string>
+
+    <!--Answers-->
+    <string name="answer_img_1">google</string>
 </resources>

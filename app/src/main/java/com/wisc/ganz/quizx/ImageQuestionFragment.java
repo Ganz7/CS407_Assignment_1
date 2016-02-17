@@ -95,7 +95,7 @@ public class ImageQuestionFragment extends Fragment {
                 }
 
                 String answer = answerBox.getText().toString().trim();
-                if(answer.toLowerCase().equals("google"))
+                if(answer.toLowerCase().equals(getString(R.string.answer_img_1)));
                     correctAnswers++;
 
                 answeredQuestions++;
