@@ -11,7 +11,7 @@
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="@string/question_text_1"
+        android:text=""
         android:id="@+id/tv_TextQuestion"
         android:textSize="20dp"
         android:layout_gravity="top"
@@ -28,18 +28,22 @@
             <RadioButton android:id="@+id/radio_option1"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginBottom="8dp"
                 android:text="@string/option_USA"/>
             <RadioButton android:id="@+id/radio_option2"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginBottom="8dp"
                 android:text="@string/option_Brazil"/>
             <RadioButton android:id="@+id/radio_option3"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginBottom="8dp"
                 android:text="@string/option_Argentina"/>
             <RadioButton android:id="@+id/radio_option4"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginBottom="8dp"
                 android:text="@string/option_Germany" />
         </RadioGroup>
 

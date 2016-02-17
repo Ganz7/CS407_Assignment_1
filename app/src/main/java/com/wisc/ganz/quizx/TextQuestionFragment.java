@@ -127,6 +127,7 @@ public class TextQuestionFragment extends Fragment {
         message.append("You scored ").append(arg_correctAnswers).append(" out of ")
                 .append(arg_totalQuestions).append( " in this Quiz!");
         resultDialogBuilder.setMessage(message);
+        resultDialogBuilder.setCancelable(false);
 
         resultDialogBuilder.show();
 
