@@ -24,9 +24,9 @@ public class ImageQuestionFragment extends Fragment {
     private Button submitButton;
     private EditText answerBox;
 
-    private int totalQuestions;
-    private int answeredQuestions;
-    private int correctAnswers;
+    private int totalQuestions; //Total Number of Questions
+    private int answeredQuestions; //Total Number of Questions Answered (Not used as of now)
+    private int correctAnswers; //Correct Answers
 
 
     public ImageQuestionFragment() {
