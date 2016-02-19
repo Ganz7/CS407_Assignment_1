@@ -1,9 +1,7 @@
 package com.wisc.ganz.quizx;
 
-import android.net.Uri;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.view.View;
 
 public class PlayQuizActivity extends AppCompatActivity {
 

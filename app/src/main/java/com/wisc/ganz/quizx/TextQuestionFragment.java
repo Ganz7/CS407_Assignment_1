@@ -84,12 +84,18 @@ public class TextQuestionFragment extends Fragment {
     public void onViewCreated(View view, Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         submitButton.setOnClickListener(new View.OnClickListener() {
+            /**
+             * When submit button is pressed,
+             * evaluate if the user answer is correct and call displayResult() to show
+             * results of the quiz.
+             * @param v (View)
+             */
             @Override
             public void onClick(View v) {
                 RadioButton chosenButton = (RadioButton) getActivity().findViewById(optionsRadioGroup.getCheckedRadioButtonId());
                 int chosenIndex = optionsRadioGroup.indexOfChild(chosenButton);
 
-                /*No option has been chosen yet*/
+                /*No option has been chosen yet. So display a toast */
                 if(chosenIndex == -1){
                     String message = "Please choose an option.";
                     Toast.makeText(getActivity().getApplicationContext(), message, Toast.LENGTH_LONG).show();

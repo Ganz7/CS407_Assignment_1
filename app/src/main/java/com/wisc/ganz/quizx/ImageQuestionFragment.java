@@ -85,8 +85,14 @@ public class ImageQuestionFragment extends Fragment {
     public void onViewCreated(View view, Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         submitButton.setOnClickListener(new View.OnClickListener(){
+            /**
+             * When submit button is pressed,
+             * evaluate if the user answer is correct and go the the next question.
+             * @param v (View)
+             */
             @Override
             public void onClick(View v){
+                //If the user has not entered anything, display toast
                 if(isEmpty(answerBox)) {
                     String message = "Please enter some text in the text field";
                     Toast.makeText(getActivity().getApplicationContext(), message, Toast.LENGTH_LONG).show();
@@ -94,11 +100,14 @@ public class ImageQuestionFragment extends Fragment {
                 }
 
                 String answer = answerBox.getText().toString().trim();
+
+                //If the user answer is correct
                 if(answer.toLowerCase().equals(getString(R.string.answer_img_1)))
                     correctAnswers++;
 
                 answeredQuestions++;
 
+                //Call the next question's fragment with updated arguments
                 getFragmentManager()
                         .beginTransaction()
                         .replace(R.id.quiz_fragment_container,
