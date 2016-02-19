@@ -17,11 +17,9 @@ import android.widget.Toast;
  * create an instance of this fragment.
  */
 public class ImageQuestionFragment extends Fragment {
-    // TODO: Rename parameter arguments, choose names that match
-    // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-    private static final String ARG_PARAM1 = "param1";
-    private static final String ARG_PARAM2 = "param2";
-    private static final String ARG_PARAM3 = "param3";
+    private static final String ARG_TOTAL_QUESTIONS = "param_total_questions";
+    private static final String ARG_ANSWERED_QUESTIONS = "param_answered_questions";
+    private static final String ARG_CORRECT_ANSWERS = "param_correct_answers";
 
     private Button submitButton;
     private EditText answerBox;
@@ -39,18 +37,19 @@ public class ImageQuestionFragment extends Fragment {
      * Use this factory method to create a new instance of
      * this fragment using the provided parameters.
      *
-     * @param param1 Parameter 1.
-     * @param param2 Parameter 2.
+     * @param param_total_questions Total Questions in the Quiz
+     * @param param_answered_questions Total Questions answered so far
+     * @param param_correct_answers Correctly Answered Questions so far
      * @return A new instance of fragment ImageQuestionFragment.
      */
-    // TODO: Rename and change types and number of parameters
-    public static ImageQuestionFragment newInstance(int param1, int param2, int param3) {
+    public static ImageQuestionFragment newInstance(
+            int param_total_questions, int param_answered_questions, int param_correct_answers) {
         ImageQuestionFragment fragment = new ImageQuestionFragment();
         Bundle args = new Bundle();
-        //args.putString(ARG_PARAM1, param1);
-        args.putInt(ARG_PARAM1, param1);
-        args.putInt(ARG_PARAM2, param2);
-        args.putInt(ARG_PARAM3, param3);
+
+        args.putInt(ARG_TOTAL_QUESTIONS, param_total_questions);
+        args.putInt(ARG_ANSWERED_QUESTIONS, param_answered_questions);
+        args.putInt(ARG_CORRECT_ANSWERS, param_correct_answers);
         fragment.setArguments(args);
         return fragment;
     }
@@ -59,9 +58,9 @@ public class ImageQuestionFragment extends Fragment {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         if (getArguments() != null) {
-            totalQuestions = getArguments().getInt(ARG_PARAM1);
-            answeredQuestions = getArguments().getInt(ARG_PARAM2);
-            correctAnswers = getArguments().getInt(ARG_PARAM3);
+            totalQuestions = getArguments().getInt(ARG_TOTAL_QUESTIONS);
+            answeredQuestions = getArguments().getInt(ARG_ANSWERED_QUESTIONS);
+            correctAnswers = getArguments().getInt(ARG_CORRECT_ANSWERS);
         }
     }
 
@@ -112,11 +111,11 @@ public class ImageQuestionFragment extends Fragment {
 
     /**
      * Checks if a given edittext is empty (spaces are also considered empty)
-     * @param etText
-     * @return True if it is Empty. False otherwise
+     * @param eText
+     * @return True if @param eText is Empty. False otherwise
      */
-    private boolean isEmpty(EditText etText) {
-        return etText.getText().toString().trim().length() == 0;
+    private boolean isEmpty(EditText eText) {
+        return eText.getText().toString().trim().length() == 0;
     }
 
 }
